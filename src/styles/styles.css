@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: aliceblue;
+}
+input:invalid{
+    border: 2px solid red;
+}
+input:valid{
+    border: 2px solid green;
+}
+.sign-up-form{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 20px;
+}
+.submit-form-button{
+    height: 50px;
+    width: 100px;
+}
