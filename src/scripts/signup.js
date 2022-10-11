@@ -17,6 +17,13 @@ let Signup = function (){
     this.form=document.querySelector('.sign-up-form');
     this.submitButton=document.querySelector('.submit-form-button');
     this.messagesDiv=document.querySelector('.messages');
+    
+    //DOM input elements
+    this.emailInput=document.querySelector('#email');
+    this.countryInput=document.querySelector('#country');
+    this.zipInput=document.querySelector('#zip');
+    this.passInput=document.querySelector('#password');
+    this.passConfInput=document.querySelector('#passwordConfirm');
 };
 
 Signup.prototype.addMessage = function (string){
@@ -68,6 +75,49 @@ Signup.prototype.submitForm = function (){
     return isValid;
 };
 
+//form input field styling
+
+Signup.prototype.invalidEmailField = function (){
+    this.emailInput.style.border='2px solid red';
+};
+
+Signup.prototype.invalidCountryField = function (){
+    this.countryInput.style.border='2px solid red';
+};
+
+Signup.prototype.invalidZipField = function (){
+    this.zipInput.style.border='2px solid red';
+};
+
+Signup.prototype.invalidPassField = function (){
+    this.passInput.style.border='2px solid red';
+};
+
+Signup.prototype.invalidPassConfField = function (){
+    this.passConfInput.style.border='2px solid red';
+};
+
+Signup.prototype.validEmailField = function (){
+    this.emailInput.style.border='2px solid grey';
+};
+
+Signup.prototype.validCountryField = function (){
+    this.countryInput.style.border='2px solid grey';
+};
+
+Signup.prototype.validZipField = function (){
+    this.zipInput.style.border='2px solid grey';
+};
+
+Signup.prototype.validPassField = function (){
+    this.passInput.style.border='2px solid grey';
+};
+
+Signup.prototype.validPassConfField = function (){
+    this.passConfInput.style.border='2px solid grey';
+};
+//form validation
+
 Signup.prototype.validateEmail = function (){
     let isValid=true;
     if (this.email=="" || this.email==null){
@@ -78,6 +128,9 @@ Signup.prototype.validateEmail = function (){
         this.addMessage('Email is not a valid email');
         isValid=false;
     };
+
+    //Sets the appropriate styling to the border of the input
+    isValid===true ? this.validEmailField() : this.invalidEmailField(); 
     return isValid;
 };
 
@@ -87,6 +140,9 @@ Signup.prototype.validateCountry = function (){
         this.addMessage('Country field should not be blank');
         isValid=false;
     };
+
+    //Sets the appropriate styling to the border of the input
+    isValid===true ? this.validCountryField() : this.invalidCountryField(); 
     return isValid;
 };
 
@@ -96,27 +152,42 @@ Signup.prototype.validateZip = function (){
         this.addMessage('Zip Code should be 5 digits');
         isValid=false;
     };
+
+    //Sets the appropriate styling to the border of the input
+    isValid===true ? this.validZipField() : this.invalidZipField(); 
     return isValid;
 };
 
 Signup.prototype.validatePassword = function (){
-    let isValid=true;
+    let isPassValid=true;
+    let isPassConfValid=true;
 
     //Check to see if both password fields are equal to each other
 
     if(this.password!=this.passwordConfirm){
         this.addMessage('Passwords do not match');
-        isValid=false;
+        isPassValid=false;
+        isPassConfValid=false;
     };
     if (this.password=="" || this.password==null){
         this.addMessage('Password field cannot be blank');
-        isValid=false;
+        isPassValid=false;
     };
     if (this.passwordConfirm==""|| this.passwordConfirm==null){
         this.addMessage('Password Confirm field cannot be blank');
-        isValid=false;
+        isPassConfValid=false;
     };
-    return isValid;
+
+    //Sets the appropriate styling to the border of the input
+    isPassValid===true ? this.validPassField() : this.invalidPassField(); 
+    isPassConfValid===true ? this.validPassConfField() : this.invalidPassConfField(); 
+
+    //If one of the two password fields are invalid return false
+    if (isPassValid===false || isPassConfValid===false){
+        return false;
+    }else{
+        return true;
+    }
 };
 
 Signup.prototype.validateForm = function (){
@@ -139,4 +210,5 @@ Signup.prototype.validateForm = function (){
 
     return isFormValid;
 };
+
 export default Signup;

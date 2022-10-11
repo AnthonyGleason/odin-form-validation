@@ -9,12 +9,6 @@ body{
     width: 100vw;
     background-color: aliceblue;
 }
-input:invalid{
-    border: 2px solid red;
-}
-input:valid{
-    border: 2px solid green;
-}
 .sign-up-form{
     height: 500px;
     width: 500px;
@@ -22,6 +16,9 @@ input:valid{
     justify-content: space-around;
     flex-direction: column;
     margin: 20px;
+}
+.sign-up-form input{
+    border: 2px solid grey;
 }
 .submit-form-button{
     height: 50px;

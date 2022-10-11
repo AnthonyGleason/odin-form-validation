@@ -33,3 +33,4 @@ SIGNUPCONTROLLER.form.querySelectorAll('input').forEach((inputField)=>{
 });
 
 //need to setup css border color stuff in the individual validation functions
+//buy a whiteboard
